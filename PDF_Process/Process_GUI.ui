@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="Table">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>691</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="ProcessMenu">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QPushButton" name="Process">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>390</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>运行</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="TargetFolder">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>230</y>
+        <width>300</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="TargetButton">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>230</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择目标文件夹</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="SourceButton">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>130</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择源文件夹</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="SourceFolder">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>130</y>
+        <width>300</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="ProcessText">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>440</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="TableMenu">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+     <widget class="QListWidget" name="Folder">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>50</y>
+        <width>531</width>
+        <height>351</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

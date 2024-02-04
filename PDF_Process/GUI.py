@@ -1,9 +1,12 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QWidget
 from Ui_Process_GUI import *
 import PDF_Copy
+import os
+import sys
 
-
+    
 class MyWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MyWindow, self).__init__(parent)
@@ -45,6 +48,15 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         else:
             self.ProcessText.setText("Fail")
     
+
+        
+        self.Folder.clear()  # 清空当前列表
+        print(self.targetFolderPath)
+        for file in os.listdir(self.targetFolderPath):
+            if file.endswith('.pdf'):
+                self.Folder.addItem(file)
+        self.Folder.show()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     myWin = MyWindow()
