@@ -5,6 +5,7 @@ from Ui_Process_GUI import *
 import PDF_Copy
 import os
 import sys
+import subprocess
 
     
 class MyWindow(QMainWindow, Ui_MainWindow):
@@ -20,6 +21,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.SourceButton.clicked.connect(self.updateSourceFolder)
         self.TargetButton.clicked.connect(self.updateTargetFolder)
         self.Process.clicked.connect(self.Process_Copy)
+        self.Show.clicked.connect(self.ShowList)
+        self.Folder.itemClicked.connect(self.open_pdf)
     
     def openFolderDialog(self):
         # 打开文件夹选择对话框
@@ -47,9 +50,25 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             self.ProcessText.setText("Finish")
         else:
             self.ProcessText.setText("Fail")
-    
 
-        
+    #打开pdf文件
+    def open_pdf(self, item):
+        pdf_filename = item.text()  # 获取被点击项的文本，即文件名
+        pdf_path = os.path.join(self.targetFolderPath, pdf_filename)
+        print(pdf_path)
+        self.open_pdf_with_adobe(pdf_path)  
+    
+    #使用adobe打开pdf
+    def open_pdf_with_adobe(self,pdf_path):
+        adobe_path = "D:\\Software\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe"
+        if os.path.exists(adobe_path) and os.path.isfile(pdf_path):
+            subprocess.Popen([adobe_path, pdf_path])
+        else:
+            print("Adobe Reader 路径不存在或 PDF 文件不存在。")
+
+  
+
+    def ShowList(self):
         self.Folder.clear()  # 清空当前列表
         print(self.targetFolderPath)
         for file in os.listdir(self.targetFolderPath):

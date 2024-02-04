@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="ProcessMenu">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>TabProcess</string>
      </attribute>
      <widget class="QPushButton" name="Process">
       <property name="geometry">
@@ -102,7 +102,7 @@
     </widget>
     <widget class="QWidget" name="TableMenu">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>TabContent</string>
      </attribute>
      <widget class="QListWidget" name="Folder">
       <property name="geometry">
@@ -112,6 +112,19 @@
         <width>531</width>
         <height>351</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Show">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>430</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Read</string>
       </property>
      </widget>
     </widget>

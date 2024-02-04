@@ -46,6 +46,9 @@ class Ui_MainWindow(object):
         self.Folder = QtWidgets.QListWidget(self.TableMenu)
         self.Folder.setGeometry(QtCore.QRect(90, 50, 531, 351))
         self.Folder.setObjectName("Folder")
+        self.Show = QtWidgets.QPushButton(self.TableMenu)
+        self.Show.setGeometry(QtCore.QRect(520, 430, 93, 28))
+        self.Show.setObjectName("Show")
         self.Table.addTab(self.TableMenu, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -53,7 +56,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.Table.setCurrentIndex(0)
+        self.Table.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -63,4 +66,5 @@ class Ui_MainWindow(object):
         self.TargetButton.setText(_translate("MainWindow", "选择目标文件夹"))
         self.SourceButton.setText(_translate("MainWindow", "选择源文件夹"))
         self.Table.setTabText(self.Table.indexOf(self.ProcessMenu), _translate("MainWindow", "TabProcess"))
+        self.Show.setText(_translate("MainWindow", "Read"))
         self.Table.setTabText(self.Table.indexOf(self.TableMenu), _translate("MainWindow", "TabContent"))
