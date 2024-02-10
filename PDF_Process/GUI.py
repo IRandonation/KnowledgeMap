@@ -6,6 +6,9 @@ import PDF_Copy
 import os
 import sys
 import subprocess
+import Map
+from sklearn.feature_extraction.text import TfidfVectorizer
+import jieba
 
     
 class MyWindow(QMainWindow, Ui_MainWindow):
@@ -22,6 +25,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.TargetButton.clicked.connect(self.updateTargetFolder)
         self.Process.clicked.connect(self.Process_Copy)
         self.Show.clicked.connect(self.ShowList)
+        self.Show.clicked.connect(self.classify)
         self.Folder.itemClicked.connect(self.open_pdf)
     
     def openFolderDialog(self):
@@ -66,18 +70,37 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         else:
             print("Adobe Reader 路径不存在或 PDF 文件不存在。")
 
-  
-
     def ShowList(self):
+        FileName = []
         self.Folder.clear()  # 清空当前列表
-        print(self.targetFolderPath)
         for file in os.listdir(self.targetFolderPath):
             if file.endswith('.pdf'):
                 self.Folder.addItem(file)
+                FileName.append(file[:-4])
         self.Folder.show()
+        return FileName
+    
+    def ListName(self):
+        FileName = []
+        for file in os.listdir(self.targetFolderPath):
+            if file.endswith('.pdf'):
+                FileName.append(file[:-4])
+        return FileName
+    
+    def classify(self):
+        tv = TfidfVectorizer(tokenizer=Map.jieba_tokenizer)
+        FileName = self.ListName()
+        tv_fit = Map.PreProcess(FileName, tv)
+        Map.calculate_cosine_similarity(tv_fit)
+        return FileName
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     myWin = MyWindow()
     myWin.show()
+    # # 初始化
+    # tv = TfidfVectorizer(tokenizer=Map.jieba_tokenizer)
+    # # 预训练
+    # Map.PreProcess(tv)
+
     sys.exit(app.exec_())
